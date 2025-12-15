@@ -1,0 +1,37 @@
+:root {
+  --bg-primary: #000;
+  --bg-secondary: #111;
+  --text-primary: #fff;
+  --accent: #ff6b6b;
+}
+
+[data-theme="light"] {
+  --bg-primary: #fff;
+  --bg-secondary: #f0f0f0;
+  --text-primary: #000;
+  --accent: #4ecdc4;
+}
+
+[data-theme="cinematic"] {
+  --bg-primary: linear-gradient(135deg, #1e3c72, #2a5298);
+  --bg-secondary: rgba(0,0,0,0.8);
+  --text-primary: #fff;
+  --accent: #ffd700;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s ease;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
