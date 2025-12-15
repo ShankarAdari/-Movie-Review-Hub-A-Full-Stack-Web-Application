@@ -8,7 +8,6 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
-
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
@@ -52,5 +51,6 @@ function App() {
 }
 
 export default App;
+
 
 
