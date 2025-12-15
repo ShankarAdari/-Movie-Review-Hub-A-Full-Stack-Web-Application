@@ -24,7 +24,6 @@ function App() {
       retina_detect: true
     });
   }, [theme]);
-
   useEffect(() => {
     fetch('http://localhost:5000/api/movies/latest')
       .then(res => res.json())
@@ -49,6 +48,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
