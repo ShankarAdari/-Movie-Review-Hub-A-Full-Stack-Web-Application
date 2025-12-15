@@ -29,7 +29,6 @@ function App() {
       .then(res => res.json())
       .then(setMovies);
   }, []);
-
   return (
     <div id="particles-js">
       <motion.header initial={{ y: -50 }} animate={{ y: 0 }} className="header">
@@ -48,6 +47,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
