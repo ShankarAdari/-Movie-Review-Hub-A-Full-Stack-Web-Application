@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import particlesJS from 'particles.js';  // For live animations
+import particlesJS from 'particles.js'; 
 import MovieList from './components/MovieList';
 import MovieDetail from './components/MovieDetail';
 import ThemeSwitcher from './components/ThemeSwitcher';
@@ -53,3 +53,4 @@ function App() {
 }
 
 export default App;
+
