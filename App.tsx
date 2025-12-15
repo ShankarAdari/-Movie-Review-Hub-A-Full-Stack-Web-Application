@@ -4,7 +4,6 @@ import particlesJS from 'particles.js';
 import MovieList from './components/MovieList';
 import MovieDetail from './components/MovieDetail';
 import ThemeSwitcher from './components/ThemeSwitcher';
-
 function App() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -53,4 +52,5 @@ function App() {
 }
 
 export default App;
+
 
