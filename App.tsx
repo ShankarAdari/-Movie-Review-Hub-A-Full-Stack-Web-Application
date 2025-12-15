@@ -11,8 +11,6 @@ function App() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    
-    // Init particles for live animation (customizable via config)
     particlesJS('particles-js', {
       particles: {
         number: { value: 50 },
@@ -51,6 +49,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
