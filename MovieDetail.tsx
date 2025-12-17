@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 const MovieDetail = ({ movie: movieId, onBack }) => {
   const [movie, setMovie] = useState(null);
   const [comment, setComment] = useState('');
-  const [userId] = useState('user_' + Math.random().toString(36).substr(2, 9));  // Simple anon user
-
+  const [userId] = useState('user_' + Math.random().toString(36).substr(2, 9));
   useEffect(() => {
     axios.get(`http://localhost:5000/api/movie/${movieId}`)
       .then(res => setMovie(res.data));
@@ -86,4 +85,5 @@ const MovieDetail = ({ movie: movieId, onBack }) => {
 };
 
 export default MovieDetail;
+
 
