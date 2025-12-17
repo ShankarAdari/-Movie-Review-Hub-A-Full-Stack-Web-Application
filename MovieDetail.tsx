@@ -10,11 +10,9 @@ const MovieDetail = ({ movie: movieId, onBack }) => {
     axios.get(`http://localhost:5000/api/movie/${movieId}`)
       .then(res => setMovie(res.data));
   }, [movieId]);
-
   const handleRate = (score) => {
     axios.post('http://localhost:5000/api/rate', { movie_id: movieId, user_id: userId, score });
   };
-
   const handleComment = () => {
     axios.post('http://localhost:5000/api/comment', { movie_id: movieId, user_id: userId, text: comment });
     setComment('');
@@ -85,5 +83,6 @@ const MovieDetail = ({ movie: movieId, onBack }) => {
 };
 
 export default MovieDetail;
+
 
 
