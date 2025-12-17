@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPlayer from 'react-player/youtube';
 import { motion } from 'framer-motion';
-
 const MovieDetail = ({ movie: movieId, onBack }) => {
   const [movie, setMovie] = useState(null);
   const [comment, setComment] = useState('');
@@ -87,3 +86,4 @@ const MovieDetail = ({ movie: movieId, onBack }) => {
 };
 
 export default MovieDetail;
+
