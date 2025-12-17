@@ -28,7 +28,6 @@ const MovieDetail = ({ movie: movieId, onBack }) => {
       navigator.share({ title: `Watch ${movie.title} Trailer`, url: movie.trailer_url });
     }
   };
-
   return (
     <motion.div initial={{ x: 100 }} animate={{ x: 0 }} className="movie-detail">
       <button onClick={onBack}>← Back</button>
@@ -79,6 +78,7 @@ const MovieDetail = ({ movie: movieId, onBack }) => {
 };
 
 export default MovieDetail;
+
 
 
 
