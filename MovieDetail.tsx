@@ -16,15 +16,11 @@ const MovieDetail = ({ movie: movieId, onBack }) => {
   const handleComment = () => {
     axios.post('http://localhost:5000/api/comment', { movie_id: movieId, user_id: userId, text: comment });
     setComment('');
-    // Refresh comments
     axios.get(`http://localhost:5000/api/movie/${movieId}`).then(res => setMovie(res.data));
   };
-
   const upvoteComment = (commentId) => {
     axios.post(`http://localhost:5000/api/comment/${commentId}/upvote`);
-    // Refresh
   };
-
   if (!movie) return <div>Loading...</div>;
 
   const shareTrailer = () => {
@@ -83,6 +79,7 @@ const MovieDetail = ({ movie: movieId, onBack }) => {
 };
 
 export default MovieDetail;
+
 
 
 
