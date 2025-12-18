@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
 const MovieList = ({ movies, onSelect }) => (
   <motion.div layout className="movie-grid" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
     <h2>Latest Movies</h2>
@@ -17,3 +16,4 @@ const MovieList = ({ movies, onSelect }) => (
 );
 
 export default MovieList;
+
