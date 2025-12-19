@@ -87,10 +87,5 @@ def upvote_comment(comment_id):
         db.session.commit()
         return jsonify({'upvotes': comment.upvotes})
     return jsonify({'error': 'Not found'}), 404
-
 if __name__ == '__main__':
-
     app.run(debug=True)
-
-
-
