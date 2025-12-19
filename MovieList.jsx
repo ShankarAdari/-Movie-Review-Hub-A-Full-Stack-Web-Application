@@ -15,3 +15,4 @@ const MovieList = ({ movies, onSelect }) => (
   </motion.div>
 );
 export default MovieList;
+
