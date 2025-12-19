@@ -53,8 +53,6 @@ def get_movie(tmdb_id):
     videos = fetch_tmdb(f'movie/{tmdb_id}/videos', {'language': 'en'})
     trailer = next((v for v in videos.get('results', []) if v['type'] == 'Trailer' and v['site'] == 'YouTube'), None)
     trailer_url = f"https://www.youtube.com/watch?v={trailer['key']}" if trailer else None
-    
-    # Get user ratings/comments from DB
     db_movie = Movie.query.filter_by(tmdb_id=tmdb_id).first()
     avg_rating = sum(r.score for r in db_movie.ratings) / len(db_movie.ratings) if db_movie and db_movie.ratings else movie_data['vote_average']
     comments = [{'text': c.text, 'upvotes': c.upvotes, 'created_at': c.created_at.isoformat()} for c in db_movie.comments] if db_movie else []
@@ -97,6 +95,7 @@ def upvote_comment(comment_id):
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
 
