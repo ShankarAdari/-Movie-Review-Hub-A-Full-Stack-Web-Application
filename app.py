@@ -33,14 +33,11 @@ class Comment(db.Model):
     created_at = Column(DateTime, default=datetime.utcnow)
 with app.app_context():
     db.create_all()
-
-# Helper: Fetch from TMDB
 def fetch_tmdb(endpoint, params=None):
     params = params or {}
     params['api_key'] = TMDB_API_KEY
     response = requests.get(f"{TMDB_BASE_URL}/{endpoint}", params=params)
     return response.json() if response.status_code == 200 else None
-
 @app.route('/api/movies/latest', methods=['GET'])
 def get_latest_movies():
     data = fetch_tmdb('movie/now_playing', {'page': 1})
@@ -106,6 +103,7 @@ def upvote_comment(comment_id):
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
 
