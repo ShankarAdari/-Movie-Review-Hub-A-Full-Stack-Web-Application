@@ -22,7 +22,7 @@ class Movie(db.Model):
 class Rating(db.Model):
     id = Column(Integer, primary_key=True)
     movie_id = Column(Integer, ForeignKey('movie.id'))
-    user_id = Column(String(50))  # Simple user ID (e.g., session-based)
+    user_id = Column(String(50))  
     score = Column(Float)  # 1-10
 
 class Comment(db.Model):
@@ -109,3 +109,4 @@ def upvote_comment(comment_id):
 if __name__ == '__main__':
 
     app.run(debug=True)
+
