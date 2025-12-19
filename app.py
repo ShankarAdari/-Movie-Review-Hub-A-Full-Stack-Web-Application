@@ -42,7 +42,6 @@ def fetch_tmdb(endpoint, params=None):
 def get_latest_movies():
     data = fetch_tmdb('movie/now_playing', {'page': 1})
     movies = data.get('results', []) if data else []
-    # Cache in DB if needed (optional)
     return jsonify([{'id': m['id'], 'title': m['title'], 'overview': m['overview'], 'poster': f"https://image.tmdb.org/t/p/w500{m['poster_path']}", 'rating': m['vote_average']} for m in movies])
 
 @app.route('/api/movie/<int:tmdb_id>', methods=['GET'])
@@ -103,6 +102,7 @@ def upvote_comment(comment_id):
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
 
