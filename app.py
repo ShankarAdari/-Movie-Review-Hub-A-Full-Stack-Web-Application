@@ -6,25 +6,19 @@ from sqlalchemy.orm import relationship
 import requests
 import os
 from datetime import datetime
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movies.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 db = SQLAlchemy(app)
-
-# TMDB Config
-TMDB_API_KEY = os.getenv('TMDB_API_KEY', 'YOUR_TMDB_API_KEY')  # Set env var for security
+TMDB_API_KEY = os.getenv('TMDB_API_KEY', 'YOUR_TMDB_API_KEY') 
 TMDB_BASE_URL = 'https://api.themoviedb.org/3'
-
-# Models
 class Movie(db.Model):
     id = Column(Integer, primary_key=True)
     tmdb_id = Column(Integer, unique=True)
     title = Column(String(200))
     ratings = relationship('Rating', backref='movie', lazy=True)
     comments = relationship('Comment', backref='movie', lazy=True)
-
 class Rating(db.Model):
     id = Column(Integer, primary_key=True)
     movie_id = Column(Integer, ForeignKey('movie.id'))
@@ -113,4 +107,5 @@ def upvote_comment(comment_id):
     return jsonify({'error': 'Not found'}), 404
 
 if __name__ == '__main__':
+
     app.run(debug=True)
