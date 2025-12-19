@@ -31,8 +31,6 @@ class Comment(db.Model):
     text = Column(Text)
     upvotes = Column(Integer, default=0)
     created_at = Column(DateTime, default=datetime.utcnow)
-
-# Create tables
 with app.app_context():
     db.create_all()
 
@@ -108,5 +106,6 @@ def upvote_comment(comment_id):
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
