@@ -56,7 +56,6 @@ def get_movie(tmdb_id):
     db_movie = Movie.query.filter_by(tmdb_id=tmdb_id).first()
     avg_rating = sum(r.score for r in db_movie.ratings) / len(db_movie.ratings) if db_movie and db_movie.ratings else movie_data['vote_average']
     comments = [{'text': c.text, 'upvotes': c.upvotes, 'created_at': c.created_at.isoformat()} for c in db_movie.comments] if db_movie else []
-    
     return jsonify({
         'title': movie_data['title'],
         'overview': movie_data['overview'],
@@ -66,7 +65,6 @@ def get_movie(tmdb_id):
         'trailer_url': trailer_url,
         'comments': comments
     })
-
 @app.route('/api/rate', methods=['POST'])
 def add_rating():
     data = request.json
@@ -74,7 +72,6 @@ def add_rating():
     db.session.add(rating)
     db.session.commit()
     return jsonify({'success': True})
-
 @app.route('/api/comment', methods=['POST'])
 def add_comment():
     data = request.json
@@ -82,7 +79,6 @@ def add_comment():
     db.session.add(comment)
     db.session.commit()
     return jsonify({'success': True})
-
 @app.route('/api/comment/<int:comment_id>/upvote', methods=['POST'])
 def upvote_comment(comment_id):
     comment = Comment.query.get(comment_id)
@@ -95,6 +91,7 @@ def upvote_comment(comment_id):
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
 
