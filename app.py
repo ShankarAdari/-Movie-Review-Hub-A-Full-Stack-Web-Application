@@ -43,18 +43,13 @@ def get_latest_movies():
     data = fetch_tmdb('movie/now_playing', {'page': 1})
     movies = data.get('results', []) if data else []
     return jsonify([{'id': m['id'], 'title': m['title'], 'overview': m['overview'], 'poster': f"https://image.tmdb.org/t/p/w500{m['poster_path']}", 'rating': m['vote_average']} for m in movies])
-
 @app.route('/api/movie/<int:tmdb_id>', methods=['GET'])
 def get_movie(tmdb_id):
     movie_data = fetch_tmdb(f'movie/{tmdb_id}')
     if not movie_data:
         return jsonify({'error': 'Movie not found'}), 404
-    
-    # Fetch images
     images = fetch_tmdb(f'movie/{tmdb_id}/images', {'include_image_languages': 'en'})
     backdrops = [f"https://image.tmdb.org/t/p/w1280{i['file_path']}" for i in images.get('backdrops', [])[:5]]
-    
-    # Fetch trailer (videos endpoint)
     videos = fetch_tmdb(f'movie/{tmdb_id}/videos', {'language': 'en'})
     trailer = next((v for v in videos.get('results', []) if v['type'] == 'Trailer' and v['site'] == 'YouTube'), None)
     trailer_url = f"https://www.youtube.com/watch?v={trailer['key']}" if trailer else None
@@ -102,6 +97,7 @@ def upvote_comment(comment_id):
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
 
